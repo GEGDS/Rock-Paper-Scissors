@@ -1,6 +1,6 @@
 //* A function that input a player choice
 function playerChoice() {
-    let playerPick =  prompt()
+    let playerPick =  prompt("Pick a move")
     playerPick = playerPick.toLowerCase();
 
     return playerPick;
@@ -22,37 +22,63 @@ let round1 = function(choice1, choice2) {
     }
     else if(choice1==="rock"){
         if(choice2==="scissors"){
-            return "rock wins"
+            playerScore++;
+            return "Player wins"
         }
         else if(choice2==="paper"){
-            return "paper wins";
+            computerScore++;
+            return "Computer wins";
         }
     }
     else if(choice1==="paper"){
         if(choice2==="scissors"){
-            return "scissors win"
+            computerScore++;
+            return "Computer wins"
         }
         else if(choice2==="rock"){
-            return "paper wins";
+            playerScore++;
+            return "Player wins";
         }
     }
     else if(choice1==="scissors"){
         if(choice2==="paper"){
-            return "scissors win"
+            playerScore++;
+            return "Player wins"
         }
         else if(choice2==="rock"){
-            return "rock wins";
+            computerScore++;
+            return "Computer wins";
         }
     }
 }
 
 
 function game() {
-    for (let i = 1; i <= 5; i++) {
-        if ( i ) {
+    for (let rounds = 1; rounds <= 5; rounds++) {
+        if ( rounds ) {
             console.log(round1(playerChoice(), computerChoice()));
 }
 }
 }
 
-console.log(game())
+let playerScore = parseInt(0);
+    let computerScore = parseInt(0);
+
+
+function scoreboard() {
+    if (playerScore > computerScore){
+        return "Player Wins"
+    }
+    else if (computerScore > playerScore){
+        return "Computer Wins"
+    }
+    else if (computerScore === playerScore){
+        return "it´s a tie"
+    }
+}
+
+console.log(game());
+console.log("Player score = " + playerScore);
+console.log("Computer score = " + computerScore);
+console.log(scoreboard());
+
